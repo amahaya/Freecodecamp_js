@@ -13,55 +13,81 @@
 
 // Inside this if statement, the computerChoice must be either 'scissors' or 'rock'.Write logic that will return a winner.
 
-const getUserChoice = userInput => {
-    userInput = userInput.toLowerCase();
-    if (userInput === 'rock' || userInput === 'paper' || userInput === 'scissors') {
-        return userInput;
-    } else {
-        console.log('Error');
-    };
-};
+// Create a function named playGame.
 
+// Inside the playGame() function, create a variable named userChoice set equal to the result of calling getUserChoice(), passing in either 'rock', 'paper', or 'scissors' as an argument.
+
+// Create another variable named computerChoice, and set it equal to the result of calling getComputerChoice().
+
+// Under both of these variables, use console.log to print them to the console.
+
+// Inside the playGame() function, call the determineWinner() function.Pass in the userChoice and computerChoice variables as its parameters.Make sure to put this function call inside of a console.log() statement so you can see the result.
+
+//     Then, to start the game, call the playGame() function on the last line of your program.
+
+// Make this game better by adding a secret cheat code.If a user types 'bomb' as their choice, then make sure they win, no matter what.
+
+const getUserChoice = (userInput) => {
+  userInput = userInput.toLowerCase();
+  if (
+    userInput === "rock" ||
+    userInput === "paper" ||
+    userInput === "scissors"
+  ) {
+    return userInput;
+  } else {
+    console.log("Error");
+  }
+};
 
 function getComputerChoice() {
-    Math.floor(Math.random() * 3);
-    switch (randomNumber) {
-        case 0:
-            return 'rock';
-        case 1:
-            return 'paper';
-        case 2:
-            return 'scissors';
-    }
-};
+  Math.floor(Math.random() * 3);
+  switch (randomNumber) {
+    case 0:
+      return "rock";
+    case 1:
+      return "paper";
+    case 2:
+      return "scissors";
+  }
+}
 
 function determineWinner(userChoice, computerChoice) {
-    if (userChoice === computerChoice) {
-        return 'The game is a tie!';
-    };
+  if (userChoice === computerChoice) {
+    return "The game is a tie!";
+  }
 
-    if (userChoice === 'rock') {
-        if (computerChoice === 'paper') {
-            return 'The computer won!';
-        } else {
-            return 'You won!';
-        }
-    };
+  if (userChoice === "rock") {
+    if (computerChoice === "paper") {
+      return "The computer won!";
+    } else {
+      return "You won!";
+    }
+  }
 
-    if (userChoice === 'paper') {
-        if (computerChoice === 'scissors') {
-            return 'The computer won!';
-        } else {
-            return 'You won!';
-        }
-    };
+  if (userChoice === "paper") {
+    if (computerChoice === "scissors") {
+      return "The computer won!";
+    } else {
+      return "You won!";
+    }
+  }
 
-    if (userChoice === 'scissors') {
-        if (computerChoice === 'rock') {
-            return 'The computer won!';
-        } else {
-            return 'You won!';
-        }
-    };
+  if (userChoice === "scissors") {
+    if (computerChoice === "rock") {
+      return "The computer won!";
+    } else {
+      return "You won!";
+    }
+  }
+}
+
+const playGame = () => {
+  const userChoice = getUserChoice("scissors");
+  const computerChoice = getComputerChoice();
+  console.log("You threw: " + userChoice);
+  console.log("The computer threw:" + computerChoice);
+  console.log(determineWinner(userChoice, computerChoice));
 };
 
+playGame();
